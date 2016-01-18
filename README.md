@@ -5,3 +5,9 @@
 * Java Application to view and access cards
 
 ![hcDB logo](https://github.com/scottdjwallace/hcDB/blob/master/img/hcDB2.png)
+
+### Components
+* Python Population Scripts
+* JavaFX GUI
+* Database
+* Java Engine
