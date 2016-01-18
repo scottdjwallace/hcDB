@@ -1,0 +1,25 @@
+package hcdb;
+
+import java.sql.*;
+
+public class Main {
+	
+	public static void main(String[] Args){
+		
+		Database db = new Database();
+		ResultSet rs = db.execute("SELECT player_name FROM cards");
+	    try {
+			while (rs.next()) {
+		    	String id = rs.getString("player_name");
+		    	System.out.println(id);
+		    }
+	    } catch (SQLException e) {
+		    throw new IllegalStateException("Cannot display results!", e);
+		}
+		db.displayResults(rs);
+		db.disconnect();
+		
+
+	}
+
+}

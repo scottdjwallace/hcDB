@@ -1,0 +1,34 @@
+package hcdb;
+
+import java.sql.*;
+
+public class Main {
+	
+	public static void main(String[] Args){
+		
+		// Connecting to Database
+		String url = "jdbc:mysql://localhost:3306/hcdatabase";
+		String username = "java";
+		String password = "password";
+
+	
+		System.out.println("Connecting database...");
+	
+		try (Connection connection = DriverManager.getConnection(url, username, password)) {
+		    System.out.println("Database connected!");
+		    Statement stmt = connection.createStatement();
+	        ResultSet rs = stmt.executeQuery("SELECT * FROM cards");
+	        while (rs.next()) {
+	        	
+	        }
+		    stmt.close();
+		    connection.close();
+
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
+		
+
+	}
+
+}

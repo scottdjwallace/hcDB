@@ -1,0 +1,15 @@
+package hcdb;
+
+import java.sql.*;
+
+public class Main {
+	
+	public static void main(String[] Args){
+		
+		Database db = new Database();
+		db.disconnect();
+		
+
+	}
+
+}

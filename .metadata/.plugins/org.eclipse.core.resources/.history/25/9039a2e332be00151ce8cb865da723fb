@@ -1,0 +1,64 @@
+package hcdb;
+
+import java.sql.*;
+
+public class Main {
+	
+	public static Connection connect(String url, String username, String password){
+		System.out.println("Connecting database...");
+		try (Connection connection = DriverManager.getConnection(url, username, password)) {
+		    System.out.println("Database connected!");
+			return connection;
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
+
+	}
+	
+	public static void disconnect(Connection connection){
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			throw new IllegalStateException("Cannot disconnect to the database!", e);
+		}
+	}
+	
+	public static ResultSet executeSQL(String query, Connection conn){
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			stmt.close();
+			return rs;
+		} catch (SQLException e) {
+			throw new IllegalStateException("Cannot disconnect to the database!", e);
+		}
+	}
+	
+	public static void main(String[] Args){
+		
+		// Connecting to Database
+		String url = "jdbc:mysql://localhost:3306/hcdatabase";
+		String username = "java";
+		String password = "password";
+		Connection conn = connect(url,username,password);
+		
+		// execute sql query
+		String query = "SELECT * FROM cards";
+		ResultSet rs = executeSQL(query,conn);
+		
+		// display results
+		try {
+			while (rs.next()) {
+				String id = rs.getString("id");
+				System.out.println(id);
+			}
+		} catch (SQLException e) {
+			throw new IllegalStateException("Cannot disconnect to the database!", e);
+		}
+		
+		// Disconnect to database
+		disconnect(conn);
+		
+	}
+
+}
