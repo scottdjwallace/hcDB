@@ -1,0 +1,33 @@
+package hcdb.address;
+
+import java.sql.*;
+
+import hcdb.address.model.Card;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class Database {
+	
+	public String URL = "jdbc:mysql://localhost:3306/hcdatabase";
+	public String USERNAME = "java";
+	public String PASSWORD = "password";
+	public Connection conn;
+	
+	public static ObservableList<Card> selectAllCards() {
+		
+		ObservableList<Card> cards = FXCollections.observableArrayList();
+		//cards.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+		
+		System.out.println("Connecting database...");
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		    System.out.println("Database connected!");
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
+		
+		return cards;
+	}
+
+
+}

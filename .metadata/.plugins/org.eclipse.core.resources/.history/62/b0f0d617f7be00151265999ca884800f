@@ -29,10 +29,10 @@ public class hcdbApplication extends Application {
     public hcdbApplication() {
         // Add some sample data
     	// call adding script here to connect to DB
-    	cardData = Database.selectAllCards();
-    	//cardData.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
-    	//cardData.add(new Card("Sid Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
-    	//cardData.add(new Card("Sid C.", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	// cardData = Class.method_name(); return type is ObservableList<Card>
+    	cardData.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	cardData.add(new Card("Sid Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	cardData.add(new Card("Sid C.", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
     }
 
     /**
