@@ -8,6 +8,8 @@
 
 ### Components
 * Python Population Scripts
-* JavaFX GUI, up to creating the main application
 * Database
-* Java Engine
+* Onto Code Makery Tutorial part 2
+* Step 1 - fill TableView with available cards
+* Step 2 - when a player is clicked it populates data on the right
+* Step 3 - able to add, edit, and delete cards
