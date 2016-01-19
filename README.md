@@ -8,6 +8,6 @@
 
 ### Components
 * Python Population Scripts
-* JavaFX GUI
+* JavaFX GUI, up to creating the main application
 * Database
 * Java Engine
