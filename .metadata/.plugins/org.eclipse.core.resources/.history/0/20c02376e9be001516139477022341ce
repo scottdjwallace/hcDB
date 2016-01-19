@@ -1,0 +1,5 @@
+package hcdb.address.model;
+
+public class Card {
+
+}

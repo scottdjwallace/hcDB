@@ -3,4 +3,10 @@
 <fullyQualifiedTypeName name="javafx.scene.layout.GridPane"/>
 <fullyQualifiedTypeName name="javafx.geometry.Pos"/>
 <fullyQualifiedTypeName name="javafx.geometry.Insets"/>
+<fullyQualifiedTypeName name="javafx.beans.property.BooleanProperty"/>
+<fullyQualifiedTypeName name="javafx.beans.property.SimpleBooleanProperty"/>
+<fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
+<fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
+<fullyQualifiedTypeName name="hcdb.address.model.Card"/>
+<fullyQualifiedTypeName name="hcdb.address.view.CardsOverviewController"/>
 </qualifiedTypeNameHistroy>

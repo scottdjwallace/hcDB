@@ -2,7 +2,11 @@ package hcdb.address;
 
 import java.io.IOException;
 
+import hcdb.address.model.Card;
+import hcdb.address.view.CardsOverviewController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +17,31 @@ public class hcdbApplication extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    /**
+     * The data as an observable list of Persons.
+     */
+    private ObservableList<Card> cardData = FXCollections.observableArrayList();
+
+    /**
+     * Constructor
+     */
+    public hcdbApplication() {
+        // Add some sample data
+    	// call adding script here to connect to DB
+    	// cardData = Class.method_name(); return type is ObservableList<Card>
+    	cardData.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	cardData.add(new Card("Sid Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	cardData.add(new Card("Sid C.", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    }
+
+    /**
+     * Returns the data as an observable list of Persons. 
+     * @return
+     */
+    public ObservableList<Card> getCardData() {
+        return cardData;
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -21,7 +50,7 @@ public class hcdbApplication extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+        showCardsOverview();
     }
 
     /**
@@ -46,15 +75,20 @@ public class hcdbApplication extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void showCardsOverview() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(hcdbApplication.class.getResource("view/CardsOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane cardsOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(cardsOverview);
+
+            // Give the controller access to the main app.
+            CardsOverviewController controller = loader.getController();
+            controller.setHcdbApp(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

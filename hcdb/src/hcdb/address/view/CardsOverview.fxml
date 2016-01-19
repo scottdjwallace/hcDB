@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hcdb.address.view.CardsOverviewController">
    <children>
       <SplitPane dividerPositions="0.6010016694490818" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="130.0" layoutY="136.0" prefHeight="598.0" prefWidth="716.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="cardTable" layoutX="130.0" layoutY="136.0" prefHeight="598.0" prefWidth="716.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="177.0" text="Player Name" />
-                      <TableColumn prefWidth="104.0" text="Company" />
-                        <TableColumn prefWidth="114.0" text="Series" />
-                        <TableColumn prefWidth="67.0" text="Season" />
-                        <TableColumn prefWidth="68.0" text="Value" />
-                        <TableColumn prefWidth="67.0" text="Rookie" />
-                        <TableColumn prefWidth="118.0" text="Memorabilia" />
+                      <TableColumn fx:id="playerNameColumn" prefWidth="177.0" text="Player Name" />
+                      <TableColumn fx:id="companyColumn" prefWidth="104.0" text="Company" />
+                        <TableColumn fx:id="seriesColumn" prefWidth="114.0" text="Series" />
+                        <TableColumn fx:id="seasonColumn" prefWidth="67.0" text="Season" />
+                        <TableColumn fx:id="valueColumn" prefWidth="68.0" text="Value" />
+                        <TableColumn fx:id="rookieColumn" prefWidth="67.0" text="Rookie" />
+                        <TableColumn fx:id="memorabiliaColumn" prefWidth="118.0" text="Memorabilia" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -63,13 +63,13 @@
                         <Label text="Value" GridPane.rowIndex="4" />
                         <Label text="Rookie" GridPane.rowIndex="5" />
                         <Label text="Memorabilia" GridPane.rowIndex="6" />
-                        <Label text="Label" GridPane.columnIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="playerNameLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="companyLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="seriesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="seasonLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="valueLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="rookieLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="memorabiliaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                 <Button layoutX="127.0" layoutY="557.0" mnemonicParsing="false" text="New..." AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="150.0" />

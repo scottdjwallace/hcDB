@@ -1,0 +1,81 @@
+package hcdb.address.view;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import hcdb.address.hcdbApplication;
+import hcdb.address.model.Card;
+
+public class CardsOverviewController {
+
+    @FXML
+    private TableView<Card> cardTable;
+    @FXML
+    private TableColumn<Card, String> playerNameColumn;
+    @FXML
+    private TableColumn<Card, String> companyColumn;
+    @FXML
+    private TableColumn<Card, String> seriesColumn;
+    @FXML
+    private TableColumn<Card, Integer> seasonColumn;
+    @FXML
+    private TableColumn<Card, Integer> valueColumn;
+    @FXML
+    private TableColumn<Card, Boolean> rookieColumn;
+    @FXML
+    private TableColumn<Card, String> memorabiliaColumn;
+    
+    @FXML
+    private Label playerNameLabel;
+    @FXML
+    private Label companyLabel;
+    @FXML
+    private Label seriesLabel;
+    @FXML
+    private Label seasonLabel;
+    @FXML
+    private Label valueLabel;
+    @FXML
+    private Label rookieLabel;
+    @FXML
+    private Label memorabiliaLabel;
+    
+    // Reference to the main application.
+    private hcdbApplication hcdbapplication;
+
+    /**
+     * The constructor.
+     * The constructor is called before the initialize() method.
+     */
+    public CardsOverviewController() {
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        playerNameColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        companyColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        seriesColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        seasonColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        valueColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        rookieColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+        memorabiliaColumn.setCellValueFactory(cellData -> cellData.getValue().playerNameProperty());
+    }
+
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+        // Add observable list data to the table
+        personTable.setItems(mainApp.getPersonData());
+    }
+}

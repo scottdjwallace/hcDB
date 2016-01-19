@@ -1,0 +1,5 @@
+package hcdb.address.view;
+
+public class CardsOverviewController {
+
+}
