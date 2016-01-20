@@ -72,9 +72,9 @@
                         <Label fx:id="memorabiliaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
-                <Button layoutX="127.0" layoutY="557.0" mnemonicParsing="false" text="New..." AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="150.0" />
-                  <Button layoutX="402.0" layoutY="557.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                  <Button layoutX="210.0" layoutY="557.0" mnemonicParsing="false" text="Edit..." AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="80.0" />
+                <Button layoutX="127.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleNewCard" text="New..." AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="146.0" />
+                  <Button layoutX="316.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleEditCard" text="Edit..." AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0" />
+                  <Button layoutX="222.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                </children>
             </AnchorPane>
         </items>

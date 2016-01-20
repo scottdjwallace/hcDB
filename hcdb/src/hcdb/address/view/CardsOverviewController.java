@@ -6,6 +6,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import hcdb.address.hcdbApplication;
 import hcdb.address.model.Card;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class CardsOverviewController {
 
@@ -41,6 +43,28 @@ public class CardsOverviewController {
     @FXML
     private Label memorabiliaLabel;
     
+    /**
+     * Called when the user clicks on the delete button.
+     */
+    @FXML
+    private void handleDeletePerson() {
+        // Call Database with all info to delete from DB
+    	// Database.deleteCard(...);
+        int selectedIndex = cardTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            cardTable.getItems().remove(selectedIndex);
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(hcdbApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Card Selected");
+            alert.setContentText("Please select a card in the table.");
+
+            alert.showAndWait();
+        }
+    }
+    
     // Reference to the main application.
     private hcdbApplication hcdbApp;
 
@@ -65,6 +89,12 @@ public class CardsOverviewController {
         valueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty().asObject());
         rookieColumn.setCellValueFactory(cellData -> cellData.getValue().rookieProperty());
         memorabiliaColumn.setCellValueFactory(cellData -> cellData.getValue().memorabiliaProperty());
+        
+        showPersonDetails(null);
+
+        // Listen for selection changes and show the person details when changed.
+        cardTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     /**
@@ -77,5 +107,64 @@ public class CardsOverviewController {
 
         // Add observable list data to the table
         cardTable.setItems(hcdbApp.getCardData());
+    }
+    
+    private void showPersonDetails(Card card) {
+        if (card != null) {
+            playerNameLabel.setText(card.getplayerName());
+            companyLabel.setText(card.getCompany());
+            seriesLabel.setText(card.getSeries());
+            seasonLabel.setText(Integer.toString(card.getSeason()));
+            valueLabel.setText(Integer.toString(card.getValue()));
+            rookieLabel.setText(Boolean.toString(card.getRookie()));
+            memorabiliaLabel.setText(card.getMemorabilia());
+        } else {
+            playerNameLabel.setText("");
+            companyLabel.setText("");
+            seriesLabel.setText("");
+            seasonLabel.setText("");
+            valueLabel.setText("");
+            rookieLabel.setText("");
+            memorabiliaLabel.setText("");
+        }
+    }
+    
+    
+    /**
+     * Called when the user clicks the new button. Opens a dialog to edit
+     * details for a new person.
+     */
+    @FXML
+    private void handleNewCard() {
+        Card tempCard = new Card();
+        boolean okClicked = hcdbApp.showCardEditDialog(tempCard);
+        if (okClicked) {
+            hcdbApp.getCardData().add(tempCard);
+        }
+    }
+
+    /**
+     * Called when the user clicks the edit button. Opens a dialog to edit
+     * details for the selected person.
+     */
+    @FXML
+    private void handleEditCard() {
+        Card selectedCard = cardTable.getSelectionModel().getSelectedItem();
+        if (selectedCard != null) {
+            boolean okClicked = hcdbApp.showCardEditDialog(selectedCard);
+            if (okClicked) {
+                showPersonDetails(selectedCard);
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(hcdbApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
     }
 }

@@ -71,5 +71,15 @@ public class Database {
 		return cards;
 	}
 
+	public static void addCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
+		
+	}
 
+	public static void updateCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
+		
+	}
+
+	public static void deleteCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
+		
+	}
 }
