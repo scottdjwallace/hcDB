@@ -22,13 +22,7 @@ public class Card {
     private final StringProperty memorabilia;
     
     public Card() {
-    	this.playerName = null;
-	    this.company = null;
-	    this.series = null;
-	    this.season = null; 
-	    this.value = null; 
-	    this.rookie = null; 
-	    this.memorabilia = null; 
+    	this("", "","", 0, 0, false, "");
     }
     
     public Card (String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {

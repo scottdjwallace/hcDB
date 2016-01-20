@@ -47,7 +47,7 @@ public class CardsOverviewController {
      * Called when the user clicks on the delete button.
      */
     @FXML
-    private void handleDeletePerson() {
+    private void handleDeleteCard() {
         // Call Database with all info to delete from DB
     	// Database.deleteCard(...);
         int selectedIndex = cardTable.getSelectionModel().getSelectedIndex();
@@ -90,11 +90,11 @@ public class CardsOverviewController {
         rookieColumn.setCellValueFactory(cellData -> cellData.getValue().rookieProperty());
         memorabiliaColumn.setCellValueFactory(cellData -> cellData.getValue().memorabiliaProperty());
         
-        showPersonDetails(null);
+        showCardDetails(null);
 
         // Listen for selection changes and show the person details when changed.
         cardTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+                (observable, oldValue, newValue) -> showCardDetails(newValue));
     }
 
     /**
@@ -109,7 +109,7 @@ public class CardsOverviewController {
         cardTable.setItems(hcdbApp.getCardData());
     }
     
-    private void showPersonDetails(Card card) {
+    private void showCardDetails(Card card) {
         if (card != null) {
             playerNameLabel.setText(card.getplayerName());
             companyLabel.setText(card.getCompany());
@@ -153,7 +153,7 @@ public class CardsOverviewController {
         if (selectedCard != null) {
             boolean okClicked = hcdbApp.showCardEditDialog(selectedCard);
             if (okClicked) {
-                showPersonDetails(selectedCard);
+                showCardDetails(selectedCard);
             }
 
         } else {

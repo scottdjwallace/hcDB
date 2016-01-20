@@ -3,7 +3,7 @@
 	<item value="/Users/ecosse_18/Desktop/Repositories/hcDB" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="FatJarPackageWizard">
 		<item value="/Users/ecosse_18/Desktop/Repositories/hcDB" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="Main - HCDB" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="hcdbApplication - hcdb" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="/Users/ecosse_18/Desktop/hcDB.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
