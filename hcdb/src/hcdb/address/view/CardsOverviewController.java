@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import hcdb.address.Database;
 import hcdb.address.hcdbApplication;
 import hcdb.address.model.Card;
 import javafx.scene.control.Alert;
@@ -48,10 +49,10 @@ public class CardsOverviewController {
      */
     @FXML
     private void handleDeleteCard() {
-        // Call Database with all info to delete from DB
-    	// Database.deleteCard(...);
         int selectedIndex = cardTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+        	Card c = cardTable.getItems().remove(selectedIndex);
+            Database.deleteCard(c.getplayerName(),c.getCompany(),c.getSeries(),c.getSeason(),c.getValue(),c.getRookie(),c.getMemorabilia());
             cardTable.getItems().remove(selectedIndex);
         } else {
             // Nothing selected.
@@ -140,6 +141,8 @@ public class CardsOverviewController {
         boolean okClicked = hcdbApp.showCardEditDialog(tempCard);
         if (okClicked) {
             hcdbApp.getCardData().add(tempCard);
+            Card c = tempCard;
+            Database.addCard(c.getplayerName(),c.getCompany(),c.getSeries(),c.getSeason(),c.getValue(),c.getRookie(),c.getMemorabilia());
         }
     }
 
@@ -150,12 +153,14 @@ public class CardsOverviewController {
     @FXML
     private void handleEditCard() {
         Card selectedCard = cardTable.getSelectionModel().getSelectedItem();
+        Card original = new Card(selectedCard.getplayerName(),selectedCard.getCompany(),selectedCard.getSeries(),selectedCard.getSeason(),selectedCard.getValue(),selectedCard.getRookie(),selectedCard.getMemorabilia());
         if (selectedCard != null) {
             boolean okClicked = hcdbApp.showCardEditDialog(selectedCard);
             if (okClicked) {
                 showCardDetails(selectedCard);
+                Card c = selectedCard;
+                Database.updateCard(original,c.getplayerName(),c.getCompany(),c.getSeries(),c.getSeason(),c.getValue(),c.getRookie(),c.getMemorabilia());
             }
-
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);

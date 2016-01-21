@@ -29,10 +29,7 @@ public class hcdbApplication extends Application {
      * Constructor
      */
     public hcdbApplication() {
-    	//cardData = Database.selectAllCards();
-    	cardData.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
-    	cardData.add(new Card("Sid Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
-    	cardData.add(new Card("Sid C.", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+    	cardData = Database.selectAllCards();
     }
 
     /**

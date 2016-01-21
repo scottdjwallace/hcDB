@@ -25,6 +25,16 @@ public class Card {
     	this("", "","", 0, 0, false, "");
     }
     
+    public Card(Card c) {
+    	this.playerName = c.playerNameProperty();
+	    this.company = c.companyProperty();
+	    this.series = c.seriesProperty();
+	    this.season = c.seasonProperty();
+	    this.value = c.valueProperty();
+	    this.rookie = c.rookieProperty();
+	    this.memorabilia = c.memorabiliaProperty();
+    }
+    
     public Card (String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
     	this.playerName = new SimpleStringProperty(playerName);
 	    this.company = new SimpleStringProperty(company);

@@ -16,7 +16,7 @@ public class Database {
 	public static ObservableList<Card> selectAllCards() {
 		
 		ObservableList<Card> cards = FXCollections.observableArrayList();
-		//cards.add(new Card("Sidney Crosby", "Upper Deck", "Young Guns", 2005, 200,true,"autograph"));
+		
 		
 		System.out.println("Connecting database...");
 		try {
@@ -72,14 +72,171 @@ public class Database {
 	}
 
 	public static void addCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
-		
+		System.out.println("Connecting database...");
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		    System.out.println("Database connected!");
+		    boolean autograph = false;
+		    boolean jersey = false;
+		    boolean equipment = false;
+	    	if (memorabilia == "Autograph, Jersey, Equipment") {
+	        	autograph = true;
+	        	jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Jersey") {
+	    		autograph = true;
+	        	jersey = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Equipment") {
+	    		autograph = true;
+	        	equipment = true;
+			}
+	    	else if (memorabilia == "Jersey, Equipment") {
+	    		jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph") {
+	    		autograph = true;
+	    	}
+	    	else if (memorabilia == "Jersey") {
+	    		jersey = true;
+	    	}
+	    	else if (memorabilia == "Equipment") {
+	    		equipment = true;
+	    	}
+	    	int rookieInt = 0;
+	    	int autographInt = 0;
+	    	int jerseyInt = 0;
+	    	int equipmentInt = 0;
+	    	if (rookie) { rookieInt = 1; }
+	    	if (autograph) { autographInt = 1; }
+	    	if (jersey) { jerseyInt = 1; }
+	    	if (equipment) { equipmentInt = 1; }
+		    String query = "INSERT INTO cards (player_name,card_company,card_series,season,approx_value,rookie,autograph,jersey,equipment) VALUES ('" + playerName + "','" + company + "','" + series + "','" + season + "','" + value + "','" + rookieInt + "','" + autographInt + "','" + jerseyInt + "','" + equipmentInt + "')";
+		    System.out.println(query);
+			Statement stmt = conn.createStatement();
+		    stmt.executeUpdate(query);
+			
+		    
+		    stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
 	}
 
-	public static void updateCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
-		
+	public static void updateCard(Card c, String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
+		System.out.println("Connecting database...");
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		    System.out.println("Database connected!");
+		    boolean autograph = false;
+		    boolean jersey = false;
+		    boolean equipment = false;
+	    	if (memorabilia == "Autograph, Jersey, Equipment") {
+	        	autograph = true;
+	        	jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Jersey") {
+	    		autograph = true;
+	        	jersey = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Equipment") {
+	    		autograph = true;
+	        	equipment = true;
+			}
+	    	else if (memorabilia == "Jersey, Equipment") {
+	    		jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph") {
+	    		autograph = true;
+	    	}
+	    	else if (memorabilia == "Jersey") {
+	    		jersey = true;
+	    	}
+	    	else if (memorabilia == "Equipment") {
+	    		equipment = true;
+	    	}
+	    	int rookieInt = 0;
+	    	int autographInt = 0;
+	    	int jerseyInt = 0;
+	    	int equipmentInt = 0;
+	    	if (rookie) { rookieInt = 1; }
+	    	if (autograph) { autographInt = 1; }
+	    	if (jersey) { jerseyInt = 1; }
+	    	if (equipment) { equipmentInt = 1; }
+	    	
+
+		    String query = "UPDATE cards "
+		    		+ "SET player_name='" + playerName + "',card_company='" + company + "',card_series='" + series + "',season='" + season + "',approx_value='" + value + "',rookie='" + rookieInt + "',autograph='" + autographInt + "',jersey='" + jerseyInt + "',equipment='" + equipmentInt + "'"
+		    		+ "WHERE player_name='" + c.getplayerName() + "' AND card_company='" + c.getCompany() + "' AND card_series='" + c.getSeries() + "'";
+		    System.out.println(query);
+			Statement stmt = conn.createStatement();
+		    stmt.executeUpdate(query);
+			
+		    
+		    stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
 	}
 
 	public static void deleteCard(String playerName, String company, String series, int season, int value, boolean rookie, String memorabilia) {
-		
+		System.out.println("Connecting database...");
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		    System.out.println("Database connected!");
+		    boolean autograph = false;
+		    boolean jersey = false;
+		    boolean equipment = false;
+	    	if (memorabilia == "Autograph, Jersey, Equipment") {
+	        	autograph = true;
+	        	jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Jersey") {
+	    		autograph = true;
+	        	jersey = true;
+	    	}
+	    	else if (memorabilia == "Autograph, Equipment") {
+	    		autograph = true;
+	        	equipment = true;
+			}
+	    	else if (memorabilia == "Jersey, Equipment") {
+	    		jersey = true;
+	        	equipment = true;
+	    	}
+	    	else if (memorabilia == "Autograph") {
+	    		autograph = true;
+	    	}
+	    	else if (memorabilia == "Jersey") {
+	    		jersey = true;
+	    	}
+	    	else if (memorabilia == "Equipment") {
+	    		equipment = true;
+	    	}
+	    	int rookieInt = 0;
+	    	int autographInt = 0;
+	    	int jerseyInt = 0;
+	    	int equipmentInt = 0;
+	    	if (rookie) { rookieInt = 1; }
+	    	if (autograph) { autographInt = 1; }
+	    	if (jersey) { jerseyInt = 1; }
+	    	if (equipment) { equipmentInt = 1; }
+		    String query = "DELETE FROM cards WHERE player_name='" + playerName + "' AND card_company='" + company + "' AND card_series='" + series + "' AND season='" + season + "' AND approx_value='" + value + "' AND rookie='" + rookieInt + "' AND autograph='" + autographInt + "' AND jersey='" + jerseyInt + "' AND equipment='" + equipmentInt + "'";
+		    System.out.println(query);
+			Statement stmt = conn.createStatement();
+		    stmt.executeUpdate(query);
+			
+		    
+		    stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
 	}
 }
