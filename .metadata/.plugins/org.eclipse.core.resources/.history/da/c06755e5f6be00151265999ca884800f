@@ -1,9 +1,0 @@
-package hcdb.address;
-
-import java.sql.*;
-
-public class Database {
-	
-
-
-}

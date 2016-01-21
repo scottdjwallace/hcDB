@@ -11,4 +11,5 @@
 <fullyQualifiedTypeName name="hcdb.address.model.Card"/>
 <fullyQualifiedTypeName name="javafx.stage.Modality"/>
 <fullyQualifiedTypeName name="hcdb.address.view.CardEditDialogController"/>
+<fullyQualifiedTypeName name="hcdb.address.Database"/>
 </qualifiedTypeNameHistroy>
