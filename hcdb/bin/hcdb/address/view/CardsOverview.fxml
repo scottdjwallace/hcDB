@@ -67,7 +67,7 @@
                   <Button layoutX="222.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleDeleteCard" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                   <ImageView fitHeight="203.0" fitWidth="418.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0">
                      <image>
-                        <Image url="@../../../../../img/hcdb_logo.png" />
+                        <Image url="@../hcdb_logo.png" />
                      </image>
                   </ImageView>
                </children>
